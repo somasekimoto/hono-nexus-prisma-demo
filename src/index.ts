@@ -19,10 +19,6 @@ app.get('/create', async (ctx) => {
       })
 })
 
-app.get("/block", async (ctx) => {
-
-})
-
 
 app.use(
   '/graphql',

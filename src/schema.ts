@@ -1,7 +1,5 @@
-// import * as path from 'path';
 import { makeSchema } from 'nexus'
-import { objectType, queryType } from 'nexus';
-import { User, Profile } from 'nexus-prisma';
+import { objectType, queryType, mutationType } from 'nexus';
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -19,20 +17,24 @@ const schema = makeSchema({
         },
       }),
     objectType({
-      name: User.$name,
-      description: User.$description,
+      name: "User",
       definition(t) {
-        t.field(User.id)
-        t.field(User.name)
-        t.field(User.email)
-        t.field(User.profile)
-     // t.field(User.id.name, User.id)    <-- For nexus@=<1.0 users
+        t.nonNull.int('id')
+        t.nonNull.string('name')
+        t.nonNull.string('email')
+        t.nonNull.string('profile')
+        t.list.field('users', {
+            type: 'User',
+            resolve(parent, _args, ctx) {
+                return prisma.user.findMany()
+            },
+        })
       }
     }),
     objectType({
-        name: Profile.$name,
+        name: 'Profile',
         definition(t) {
-          t.field(Profile.id)
+            t.nonNull.int('id')
         },
       })
   ],
