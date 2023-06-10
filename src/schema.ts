@@ -1,7 +1,6 @@
 import { makeSchema } from 'nexus'
 import { objectType, queryType, mutationType, nonNull, stringArg, intArg, idArg } from 'nexus';
 import { PrismaClient } from '@prisma/client'
-// import { createUser } from './types/mutation/user';
 
 const prisma = new PrismaClient()
 
