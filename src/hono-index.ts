@@ -1,10 +1,12 @@
 import { Hono } from 'hono'
 import { ApolloServer } from '@apollo/server'
 import { serve } from '@hono/node-server'
+import http from 'http'
 import schema from './schema';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import { cors } from 'hono/cors'
 import { honoApolloMiddleware } from './honoApolloMiddleware';
+import { graphqlServer } from '@hono/graphql-server';
 
 const app = new Hono()
 const nodeServer = serve(app)
@@ -39,3 +41,6 @@ async function startServer() {
 }
 
 startServer()
+
+// graphql-server を使う場合は以下のようになる
+// app.use('/graphql', graphqlServer({schema}))
