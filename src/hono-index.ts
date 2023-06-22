@@ -13,7 +13,7 @@ const nodeServer = serve(app)
 async function startServer() {
   
   const apollo = new ApolloServer({
-    schema,
+schema,
 plugins: [ApolloServerPluginDrainHttpServer({ httpServer: nodeServer  })]
   })
 
