@@ -1,5 +1,5 @@
 import { makeSchema } from 'nexus'
-import { objectType, queryType, mutationType, nonNull, stringArg, intArg, idArg } from 'nexus';
+import { objectType, queryType, mutationType, nonNull, stringArg, intArg } from 'nexus';
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
