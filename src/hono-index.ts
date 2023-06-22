@@ -17,7 +17,7 @@ schema,
 plugins: [ApolloServerPluginDrainHttpServer({ httpServer: nodeServer  })]
   })
 
-  await apollo.start()
+await apollo.start()
 
   app.use('*', cors({
     origin: ['http://localhost:3000'],
