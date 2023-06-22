@@ -1,7 +1,6 @@
 import { Hono } from 'hono'
 import { ApolloServer } from '@apollo/server'
 import { serve } from '@hono/node-server'
-import http from 'http'
 import schema from './schema';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer'
 import { cors } from 'hono/cors'
